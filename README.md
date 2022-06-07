@@ -1,5 +1,7 @@
 ## TODO
-- [ ] Spring MVC の Maven テンプレートを探す
+- [x] Spring MVC の Maven テンプレートを探す
+  - [x] webアプリ用のArchtypeとする
+  - [x] [Maven Webapp Archetype – Maven Webapp Archetype](https://maven.apache.org/archetypes/maven-archetype-webapp/)
 - [ ] 文字列のみ出力するアプリを実装する
 - [ ] warファイルにパッケージングする
 - [ ] Tomcat の Docker コンテナを用意する
