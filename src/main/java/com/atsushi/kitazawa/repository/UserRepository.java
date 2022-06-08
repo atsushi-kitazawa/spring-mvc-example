@@ -3,11 +3,32 @@ package com.atsushi.kitazawa.repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.atsushi.kitazawa.model.User;
 
 public class UserRepository {
 
+    public List<User> findAll() {
+        List<User> users = new ArrayList<>();
+        try (Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement("select * from users");) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String userId = rs.getString("user_id");
+                String userName = rs.getString("user_name");
+                String birthDay = rs.getString("birthday");
+                String email = rs.getString("email");
+                User user = new User(userId, userName, birthDay, email);
+                users.add(user);
+            }
+            System.out.println(users);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
     public User findById(String id) {
         User user = null;
         try (Connection conn = DatabaseConnection.getConnection();

@@ -1,5 +1,7 @@
 package com.atsushi.kitazawa;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +16,12 @@ import com.atsushi.kitazawa.repository.UserRepository;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView findAll(Model model) {
+        List<User> users = new UserRepository().findAll();
+        return new ModelAndView("viewusers", "list", users);
+    }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public String find(@PathVariable("userId") String userId, Model model) {
