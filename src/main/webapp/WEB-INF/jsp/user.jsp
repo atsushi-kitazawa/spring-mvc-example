@@ -3,11 +3,14 @@
     <html>
 
     <head>
-        <title>Hello World</title>
+        <title>User Reference Page.</title>
     </head>
 
     <body>
-        <h2>${message}</h2>
+        <h2>userId : ${userId}</h2>
+        <h2>userName : ${userName}</h2>
+        <h2>birthDay : ${birthDay}</h2>
+        <h2>email : ${email}</h2>
     </body>
 
     </html>

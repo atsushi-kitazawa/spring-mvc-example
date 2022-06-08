@@ -14,6 +14,22 @@ public class User {
         this.email = email;
     }
 
+    public String userId() {
+        return userId;
+    }
+
+    public String userName() {
+        return userName;
+    }
+
+    public String birthDay() {
+        return birthDay;
+    }
+
+    public String email() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return "User [birthDay=" + birthDay + ", email=" + email + ", userId=" + userId + ", userName=" + userName
