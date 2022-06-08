@@ -7,7 +7,7 @@
 - [x] Tomcat の Docker コンテナを用意する
 - [x] warファイルをデプロイする
 - [x] PostgreSQL の Docker コンテナを用意する
-- [ ] PostgreSQL に初期データを用意する
+- [x] PostgreSQL に初期データを用意する
 - [ ] JDBC を利用した CRUD アプリを実装する
 - [ ] テンプレートエンジンを調査する
 - [ ] テンプレートエンジンを適用した実装にする

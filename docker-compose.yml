@@ -2,23 +2,27 @@ version: '3.1'
 
 services:
 
-#  db:
-#    image: postgres:13.7-alpine
-#    container_name: my_postgres_13
-#    restart: always
-#    environment:
-#      POSTGRES_PASSWORD: password
-#      PGDATA: /var/lib/postgresql/data/pgdata
-#    volumes:
-#    - $HOME/workspace/docker/postgres_13/spring-mvc-example:/var/lib/postgresql/data
-#    ports:
-#    - 25432:5432
+  db:
+    image: postgres:13.7-alpine
+    container_name: my_postgres_13
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./db_init/:/docker-entrypoint-initdb.d
+    ports:
+    - 5434:5432
 
   web:
-    #depends_on:
-    #  - db
+    depends_on:
+      - db
     image: tomcat:9.0
     volumes:
       - ./target/spring-mvc-example.war:/usr/local/tomcat/webapps/spring-mvc-example.war
     ports:
       - '8082:8080'
+
+volumes:
+  pgdata:
