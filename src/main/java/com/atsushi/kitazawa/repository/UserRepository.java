@@ -10,8 +10,8 @@ public class UserRepository {
 
     public User findById(String id) {
         User user = null;
-        try (Connection conn = DatabaseConnection.getConnection();) {
-            PreparedStatement ps = conn.prepareStatement("select * from users where user_id = ?");
+        try (Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement("select * from users where user_id = ?");) {
             ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -26,5 +26,24 @@ public class UserRepository {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public void save(User u) {
+        try (Connection conn = DatabaseConnection.getConnection();) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement ps = conn.prepareStatement("insert into users values (?, ?, ?, ?)");) {
+                ps.setString(1, u.getUserId());
+                ps.setString(2, u.getUserName());
+                ps.setString(3, u.getBirthday());
+                ps.setString(4, u.getEmail());
+                ps.executeUpdate();
+                conn.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+                conn.rollback();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
