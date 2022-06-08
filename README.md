@@ -9,5 +9,9 @@
 - [x] PostgreSQL の Docker コンテナを用意する
 - [x] PostgreSQL に初期データを用意する
 - [ ] JDBC を利用した CRUD アプリを実装する
+  - [ ] CREATE
+  - [x] READ
+  - [ ] UPDATE
+  - [ ] DELETE
 - [ ] テンプレートエンジンを調査する
 - [ ] テンプレートエンジンを適用した実装にする
