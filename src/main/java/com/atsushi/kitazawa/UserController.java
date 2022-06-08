@@ -41,7 +41,7 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("user") User user) {
         new UserRepository().save(user);
-        return new ModelAndView("userform", "command", user);
-        // return new ModelAndView("redirect:/viewemp");
+        // return new ModelAndView("userform", "command", user);
+        return new ModelAndView("redirect:/user/");
     }
 }
